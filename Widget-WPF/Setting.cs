@@ -32,7 +32,7 @@ namespace Widget_WPF
                 var bc = new BrushConverter();
                 this.colorBox.BackColor = ColorTranslator.FromHtml(htmlColorBox.Text);
                 Data.color = htmlColorBox.Text;
-                _main.FreshBackColor();
+                _main.RefreshBackColor();
             }
             catch(Exception ex)
             {

@@ -1,26 +1,24 @@
-﻿<Window x:Name="MW" x:Class="Widget_WPF.MainWindow"
+﻿<Window x:Name="MW"
+        x:Class="Widget_WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Widget_WPF"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="#99ff9fff"
+        Background="#99669FFF"
         Title="MainWindow"
         Height="237"
         Width="369"
-        Loaded="MW_Loaded"  
+        Loaded="MW_Loaded"
         ShowInTaskbar="False"
         ResizeMode="NoResize">
     <Grid >
-
         <Grid.ColumnDefinitions>
-
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Label Content="00"
                HorizontalAlignment="Left"
                Margin="0"
@@ -29,41 +27,42 @@
                Height="201"
                Name="Hour"
                Foreground="White"
-               Background="Transparent" Width="186" />
-        <Label Content="00" 
-               HorizontalAlignment="Left" 
-               Margin="186,33,0,0" 
-               VerticalAlignment="Top" 
-               FontSize="50" 
-               Height="74" 
-               Width="69" 
-               x:Name="Minute"
-               Foreground="White"/>
-        <Label Content="2020年00月00日" 
-               HorizontalAlignment="Left" 
-               Margin="191,107,0,0" 
+               Background="Transparent"
+               Width="186" />
+        <Label Content="00"
+               HorizontalAlignment="Left"
+               Margin="186,33,0,0"
                VerticalAlignment="Top"
-               FontSize="20" Height="35"
+               FontSize="50"
+               Height="74"
+               Width="69"
+               x:Name="Minute"
+               Foreground="White" />
+        <Label Content="2020年00月00日"
+               HorizontalAlignment="Left"
+               Margin="191,107,0,0"
+               VerticalAlignment="Top"
+               FontSize="20"
+               Height="35"
                Width="164"
                Foreground="White"
-               Name="Date"/>
-        <Button Content="Button" 
-                HorizontalAlignment="Left" 
-                Margin="191,147,0,0" 
-                VerticalAlignment="Top" 
-                Width="138" 
-                Click="Button_Click" 
-                Height="19"
-                />
-        <Label Content="00" 
-               HorizontalAlignment="Left" 
-               Margin="260,33,0,0" 
-               VerticalAlignment="Top" 
-               FontSize="50" Height="74" 
-               Width="69" 
+               Name="Date" />
+        <Button Content="Button"
+                HorizontalAlignment="Left"
+                Margin="191,147,0,0"
+                VerticalAlignment="Top"
+                Width="138"
+                Click="Button_Click"
+                Height="19" />
+        <Label Content="00"
+               HorizontalAlignment="Left"
+               Margin="260,33,0,0"
+               VerticalAlignment="Top"
+               FontSize="50"
+               Height="74"
+               Width="69"
                Foreground="White"
-               x:Name="Second"/>
+               x:Name="Second" />
 
     </Grid>
-    
 </Window>

@@ -20,6 +20,7 @@ namespace Widget_WPF
 
         public NotifyIcon notify;
         readonly BrushConverter bc = new BrushConverter();
+        readonly Setting s;
 
         public MainWindow()
         {
@@ -32,6 +33,7 @@ namespace Widget_WPF
             MouseMove += MainWindow_MouseMove;
             Topmost = false;
             s = new Setting(this);
+
         }
 
         private void MainWindow_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
@@ -47,17 +49,14 @@ namespace Widget_WPF
             Background = (Brush)bc.ConvertFrom(htmlCode);
         }
 
-        readonly Setting s;
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            /* if (t.IsAlive == true && t.ThreadState != System.Threading.ThreadState.Suspended)
-                 t.Suspend();
-             else
-                 t.Resume();*/
-            s.Show();
-        }
 
-        public void FreshBackColor()
+        private void Button_Click(object sender, RoutedEventArgs e) => ShowSetting();
+
+        private void Setting_Click(object sender, EventArgs e) => ShowSetting();
+
+        private void Exit_Click(object sender, EventArgs e) => Environment.Exit(0);
+
+        public void RefreshBackColor()
         {
             try
             {
@@ -82,11 +81,6 @@ namespace Widget_WPF
 
                 Thread.Sleep(100);
             }
-        }
-
-        private void Exit_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
         }
 
         #region 初始化
@@ -155,9 +149,17 @@ namespace Widget_WPF
 
         }
 
-        private void Setting_Click(object sender, EventArgs e)
+
+
+        private void ShowSetting()
         {
-            s.Show();
+            //s = new Setting(this);
+            try
+            {
+                s.ShowDialog();
+            }
+            catch
+            { }
         }
 
         private void LockForm_Click(object sender, EventArgs e)
