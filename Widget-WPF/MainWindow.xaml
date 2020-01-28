@@ -26,7 +26,7 @@
                FontSize="150"
                Height="201"
                Name="Hour"
-               Foreground="White"
+               Foreground="#FFFFFFFF"
                Background="Transparent"
                Width="186" />
         <Label Content="00"
@@ -45,7 +45,7 @@
                FontSize="20"
                Height="35"
                Width="164"
-               Foreground="White"
+               Foreground="#FFFFFFFF"
                Name="Date" />
         <Button Content="Button"
                 HorizontalAlignment="Left"
@@ -61,7 +61,7 @@
                FontSize="50"
                Height="74"
                Width="69"
-               Foreground="White"
+               Foreground="#FFFFFFFF"
                x:Name="Second" />
 
     </Grid>

@@ -69,6 +69,21 @@ namespace Widget_WPF
 
             }
         }
+
+        public void RefreshFontColor(string htmlColor)
+        {
+            try
+            {
+                Minute.Foreground = Hour.Foreground = Second.Foreground = Date.Foreground = (Brush)bc.ConvertFrom(htmlColor);
+            }
+            catch
+            {
+                //MessageBox.Show("设置颜色出现错误，您输入的颜色有问题？已回滚至上一个色彩。", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+        }
+
+
         public void SetTime()
         {
             while (true)

@@ -33,7 +33,7 @@
             this.RedBar = new System.Windows.Forms.TrackBar();
             this.AlphaBar = new System.Windows.Forms.TrackBar();
             this.colorBox = new System.Windows.Forms.PictureBox();
-            this.htmlColorBox = new System.Windows.Forms.TextBox();
+            this.backHtmlColorBox = new System.Windows.Forms.TextBox();
             this.BlueBar = new System.Windows.Forms.TrackBar();
             this.GreenBar = new System.Windows.Forms.TrackBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -45,6 +45,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.IsBack = new System.Windows.Forms.RadioButton();
             this.IsFont = new System.Windows.Forms.RadioButton();
+            this.fontHtmlColorBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.RedBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlphaBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).BeginInit();
@@ -106,13 +107,14 @@
             this.colorBox.TabStop = false;
             this.colorBox.Paint += new System.Windows.Forms.PaintEventHandler(this.colorBox_Paint);
             // 
-            // htmlColorBox
+            // backHtmlColorBox
             // 
-            this.htmlColorBox.Location = new System.Drawing.Point(180, 174);
-            this.htmlColorBox.Name = "htmlColorBox";
-            this.htmlColorBox.Size = new System.Drawing.Size(156, 21);
-            this.htmlColorBox.TabIndex = 6;
-            this.htmlColorBox.TextChanged += new System.EventHandler(this.HtmlColorBox_TextChanged);
+            this.backHtmlColorBox.Location = new System.Drawing.Point(180, 174);
+            this.backHtmlColorBox.Name = "backHtmlColorBox";
+            this.backHtmlColorBox.Size = new System.Drawing.Size(156, 21);
+            this.backHtmlColorBox.TabIndex = 6;
+            this.backHtmlColorBox.TextChanged += new System.EventHandler(this.HtmlColorBox_TextChanged);
+            this.backHtmlColorBox.Enter += new System.EventHandler(this.backHtmlColorBox_Enter);
             // 
             // BlueBar
             // 
@@ -229,7 +231,7 @@
             // 
             this.groupBox1.Controls.Add(this.IsFont);
             this.groupBox1.Controls.Add(this.IsBack);
-            this.groupBox1.Location = new System.Drawing.Point(21, 216);
+            this.groupBox1.Location = new System.Drawing.Point(21, 254);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(315, 100);
             this.groupBox1.TabIndex = 18;
@@ -258,6 +260,16 @@
             this.IsFont.TabIndex = 1;
             this.IsFont.Text = "文字颜色";
             this.IsFont.UseVisualStyleBackColor = true;
+            this.IsFont.CheckedChanged += new System.EventHandler(this.IsFont_CheckedChanged);
+            // 
+            // fontHtmlColorBox
+            // 
+            this.fontHtmlColorBox.Location = new System.Drawing.Point(180, 201);
+            this.fontHtmlColorBox.Name = "fontHtmlColorBox";
+            this.fontHtmlColorBox.Size = new System.Drawing.Size(156, 21);
+            this.fontHtmlColorBox.TabIndex = 19;
+            this.fontHtmlColorBox.TextChanged += new System.EventHandler(this.HtmlColorBox_TextChanged);
+            this.fontHtmlColorBox.Enter += new System.EventHandler(this.fontHtmlColorBox_Enter);
             // 
             // Setting
             // 
@@ -265,10 +277,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(380, 429);
+            this.Controls.Add(this.fontHtmlColorBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.htmlColorBox);
+            this.Controls.Add(this.backHtmlColorBox);
             this.Controls.Add(this.colorBox);
             this.Controls.Add(this.Cancle);
             this.Controls.Add(this.OK);
@@ -304,7 +317,7 @@
         private System.Windows.Forms.TrackBar RedBar;
         private System.Windows.Forms.TrackBar AlphaBar;
         private System.Windows.Forms.PictureBox colorBox;
-        private System.Windows.Forms.TextBox htmlColorBox;
+        private System.Windows.Forms.TextBox backHtmlColorBox;
         private System.Windows.Forms.TrackBar BlueBar;
         private System.Windows.Forms.TrackBar GreenBar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -316,5 +329,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton IsFont;
         private System.Windows.Forms.RadioButton IsBack;
+        private System.Windows.Forms.TextBox fontHtmlColorBox;
     }
 }
