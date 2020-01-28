@@ -15,11 +15,17 @@ namespace Widget_WPF
         {
             InitializeComponent();
             _main = tmp;
-            this.colorBox.BackColor = ColorTranslator.FromHtml(_main.Background.ToString());
-            this.htmlColorBox.Text = _main.Background.ToString();
-            Application.EnableVisualStyles();
-            RefreshBar(htmlColorBox.Text);
+            InitialSetting();
             //Data.jo = JObject.Parse(Data.json);
+        }
+
+        private void Setting_Shown(object sender, EventArgs e) => InitialSetting();
+
+        private void InitialSetting()
+        {
+            this.colorBox.BackColor = ColorTranslator.FromHtml(_main.Background.ToString());
+            this.htmlColorBox.Text = _main.Background.ToString(); Application.EnableVisualStyles();
+            RefreshBar(htmlColorBox.Text);
         }
 
         private void Setting_Load(object sender, EventArgs e)
@@ -45,8 +51,8 @@ namespace Widget_WPF
 
         private void OK_Click(object sender, EventArgs e)
         {
-            //Data.color
-            _main.RefreshBackColor(Data.color = htmlColorBox.Text);
+            //Data.backColor
+            _main.RefreshBackColor(Data.backColor = htmlColorBox.Text);
             this.Close();
         }
 
@@ -54,13 +60,23 @@ namespace Widget_WPF
         {
             try
             {
-                _main.RefreshBackColor(Data.color);
+                _main.RefreshBackColor(Data.backColor);
             }
             catch
             { }
             this.Close();
         }
 
+        private void IsBack_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Setting_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Data.backColor = Data._tmpBackColor;
+            _main.RefreshBackColor(Data.backColor);
+        }
 
         private void colorBox_Paint(object sender, PaintEventArgs e)
         {
@@ -137,10 +153,6 @@ namespace Widget_WPF
             GNumeric.Value = GreenBar.Value;
         }
 
-        private void Setting_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
 
         private void BlueBar_ValueChanged(object sender, EventArgs e)
         {

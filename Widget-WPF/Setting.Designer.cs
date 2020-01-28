@@ -42,6 +42,9 @@
             this.GNumeric = new System.Windows.Forms.NumericUpDown();
             this.RNumeric = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.IsBack = new System.Windows.Forms.RadioButton();
+            this.IsFont = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.RedBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlphaBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).BeginInit();
@@ -53,6 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RNumeric)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // OK
@@ -104,9 +108,9 @@
             // 
             // htmlColorBox
             // 
-            this.htmlColorBox.Location = new System.Drawing.Point(16, 227);
+            this.htmlColorBox.Location = new System.Drawing.Point(180, 174);
             this.htmlColorBox.Name = "htmlColorBox";
-            this.htmlColorBox.Size = new System.Drawing.Size(100, 21);
+            this.htmlColorBox.Size = new System.Drawing.Size(156, 21);
             this.htmlColorBox.TabIndex = 6;
             this.htmlColorBox.TextChanged += new System.EventHandler(this.HtmlColorBox_TextChanged);
             // 
@@ -221,12 +225,47 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(51, 147);
             this.tableLayoutPanel2.TabIndex = 17;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.IsFont);
+            this.groupBox1.Controls.Add(this.IsBack);
+            this.groupBox1.Location = new System.Drawing.Point(21, 216);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(315, 100);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // IsBack
+            // 
+            this.IsBack.AutoSize = true;
+            this.IsBack.Checked = true;
+            this.IsBack.Location = new System.Drawing.Point(7, 21);
+            this.IsBack.Name = "IsBack";
+            this.IsBack.Size = new System.Drawing.Size(71, 16);
+            this.IsBack.TabIndex = 0;
+            this.IsBack.TabStop = true;
+            this.IsBack.Text = "背景颜色";
+            this.IsBack.UseVisualStyleBackColor = true;
+            this.IsBack.CheckedChanged += new System.EventHandler(this.IsBack_CheckedChanged);
+            // 
+            // IsFont
+            // 
+            this.IsFont.AutoSize = true;
+            this.IsFont.Location = new System.Drawing.Point(105, 21);
+            this.IsFont.Name = "IsFont";
+            this.IsFont.Size = new System.Drawing.Size(71, 16);
+            this.IsFont.TabIndex = 1;
+            this.IsFont.Text = "文字颜色";
+            this.IsFont.UseVisualStyleBackColor = true;
+            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(380, 429);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.htmlColorBox);
@@ -238,6 +277,7 @@
             this.Text = "Setting";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Setting_FormClosing);
             this.Load += new System.EventHandler(this.Setting_Load);
+            this.Shown += new System.EventHandler(this.Setting_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.RedBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlphaBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).EndInit();
@@ -250,6 +290,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.GNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RNumeric)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +313,8 @@
         private System.Windows.Forms.NumericUpDown GNumeric;
         private System.Windows.Forms.NumericUpDown RNumeric;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton IsFont;
+        private System.Windows.Forms.RadioButton IsBack;
     }
 }

@@ -9,7 +9,7 @@ namespace Widget_WPF
 {
     public static class Data
     {
-        public static string color = DEFAULT_BACK_COLOR;
+        public static string backColor = DEFAULT_BACK_COLOR;
         public static JObject jo = new JObject();
         public static string json = "{ \"backcolor\" : \"#99ff9fff\" }";
 
