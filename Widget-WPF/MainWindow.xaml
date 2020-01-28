@@ -9,8 +9,8 @@
         AllowsTransparency="True"
         Background="#99669FFF"
         Title="MainWindow"
-        Height="237"
-        Width="369"
+        Height="200"
+        Width="360"
         Loaded="MW_Loaded"
         ShowInTaskbar="False"
         ResizeMode="NoResize">
