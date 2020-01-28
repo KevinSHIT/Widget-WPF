@@ -7,6 +7,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 
 using Widget_WPF.Win32;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Widget_WPF
 {
@@ -56,14 +57,15 @@ namespace Widget_WPF
 
         private void Exit_Click(object sender, EventArgs e) => Environment.Exit(0);
 
-        public void RefreshBackColor()
+        public void RefreshBackColor(string htmlColor)
         {
             try
             {
-                Background = (Brush)bc.ConvertFrom(Data.color);
+                Background = (Brush)bc.ConvertFrom(htmlColor);
             }
             catch
             {
+                //MessageBox.Show("设置颜色出现错误，您输入的颜色有问题？已回滚至上一个色彩。", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
         }
