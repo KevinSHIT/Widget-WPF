@@ -3,6 +3,8 @@
 一个简单轻松的时钟控件。  
 An easy time widget for Windows 10.
 
+**If you want to read English version README, click [here](#widget-wpf-english-version-readme).**
+
 ## 特性
 
 - Win+D组合键不会隐藏*
@@ -53,4 +55,4 @@ An easy time widget for Windows 10.
 
 ## Screenshots
 
-Look on [截图](##截图)
+Look on [截图](#截屏)
