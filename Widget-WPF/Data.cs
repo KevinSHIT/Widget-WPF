@@ -29,7 +29,7 @@ namespace Widget_WPF
             "    \"backcolor\": \"#45FFFFFF\",\r\n" +
             "    \"fontcolor\": \"#EEFFFFFF\",\r\n" +
             "    \"left\": 0,\r\n" +
-            "    \"top\": 0\"" +
+            "    \"top\": 0\r\n" +
             "}";
     }
 }
