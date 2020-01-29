@@ -21,11 +21,15 @@ namespace Widget_WPF
         public const string DEFAULT_BACK_COLOR = "#45FFFFFF";
         public const string DEFAULT_FONT_COLOR = "#EEFFFFFF";
         public const string DEFAULT_CONFIG_PATH = "config.json";
+        public const double DEFAULT_FORM_TOP = 0;
+        public const double DEFAULT_FORM_LEFT = 0;
 
         public const string DEFAULT_CONFIG_JSON =
             "{\r\n" +
             "    \"backcolor\": \"#45FFFFFF\",\r\n" +
-            "    \"fontcolor\": \"#EEFFFFFF\"\r\n" +
+            "    \"fontcolor\": \"#EEFFFFFF\",\r\n" +
+            "    \"left\": 0,\r\n" +
+            "    \"top\": 0\"" +
             "}";
     }
 }

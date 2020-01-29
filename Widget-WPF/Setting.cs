@@ -111,7 +111,6 @@ namespace Widget_WPF
 
         private void Setting_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Data.backColor = Data._tmpBackColor;
             _main.RefreshBackColor(Data.backColor);
             _main.RefreshFontColor(Data.fontColor);
         }

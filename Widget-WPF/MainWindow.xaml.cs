@@ -32,6 +32,8 @@ namespace Widget_WPF
             ReadConfig();
             RefreshBackColor(Data.backColor);
             RefreshFontColor(Data.fontColor);
+            this.Left = double.Parse(Data.jo["left"].ToString());
+            this.Top = double.Parse(Data.jo["top"].ToString());
             InitializeNotifyIcon();
             InitializeContextMenuStrip();
             t = new Thread(new ThreadStart(SetTime));
@@ -94,15 +96,51 @@ namespace Widget_WPF
                     CreateConfig(Data.DEFAULT_CONFIG_PATH);
                     ReadConfig();
                 }
+                bool needSave = false;
                 if (Data.jo["backcolor"] == null || !IsHtmlColorCode(Data.jo["backcolor"].ToString()))
                 {
+                    needSave = true;
                     Data.jo["backcolor"] = Data.DEFAULT_BACK_COLOR;
                 }
                 if (Data.jo["fontcolor"] == null || !IsHtmlColorCode(Data.jo["fontcolor"].ToString()))
                 {
+                    needSave = true;
                     Data.jo["fontcolor"] = Data.DEFAULT_FONT_COLOR;
                 }
+                if (Data.jo["top"] == null)
+                {
+                    needSave = true;
+                    Data.jo["top"] = Data.DEFAULT_FORM_TOP;
+                }
+                if (Data.jo["left"] == null)
+                {
+                    needSave = true;
+                    Data.jo["left"] = Data.DEFAULT_FORM_LEFT;
+                }
+                try
+                {
+                    double.Parse(Data.jo["left"].ToString());
+                }
+                catch
+                {
+                    needSave = true;
+                    Data.jo["left"] = Data.DEFAULT_FORM_LEFT;
+                }
+                try
+                {
+                    double.Parse(Data.jo["top"].ToString());
+                }
+                catch
+                {
+                    needSave = true;
+                    Data.jo["top"] = Data.DEFAULT_FORM_TOP;
+                }
 
+                if (needSave)
+                {
+                    File.WriteAllText(Data.DEFAULT_CONFIG_PATH, Data.jo.ToString());
+                    ReadConfig();
+                }
                 Data.backColor = Data.jo["backcolor"].ToString();
                 Data.fontColor = Data.jo["fontcolor"].ToString();
             }
@@ -131,6 +169,10 @@ namespace Widget_WPF
             if (e.LeftButton == MouseButtonState.Pressed && !lockForm.Checked)
             {
                 this.DragMove();
+
+                Data.jo["top"] = this.Top;
+                Data.jo["left"] = this.Left;
+                File.WriteAllText(Data.DEFAULT_CONFIG_PATH, Data.jo.ToString());
             }
         }
 
@@ -181,6 +223,20 @@ namespace Widget_WPF
         }
 
         #region 初始化
+        private void MW_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowInteropHelper wndHelper = new WindowInteropHelper(this);
+
+            int exStyle = (int)Api.GetWindowLong(wndHelper.Handle, (int)Api.GetWindowLongFields.GWL_EXSTYLE);
+
+            exStyle |= (int)Api.ExtendedWindowStyles.WS_EX_TOOLWINDOW;
+
+            Api.SetWindowLong(wndHelper.Handle, (int)Api.GetWindowLongFields.GWL_EXSTYLE, (IntPtr)exStyle);
+
+            Api.SetParent(new WindowInteropHelper(this).Handle, Api.GetDesktopPtr());
+
+        }
+
         readonly ContextMenuStrip cms = new ContextMenuStrip();
         private void InitializeNotifyIcon()
         {
@@ -193,7 +249,7 @@ namespace Widget_WPF
             };
         }
 
-        ToolStripMenuItem exit, lockForm, setting;
+        ToolStripMenuItem exit, lockForm, setting, resetLocation;
         ToolStripSeparator tss;
         ToolStripLabel name;
         private void InitializeContextMenuStrip()
@@ -201,6 +257,7 @@ namespace Widget_WPF
             cms.RenderMode = ToolStripRenderMode.Professional;
             cms.ShowCheckMargin = true;
             cms.ShowImageMargin = false;
+
             exit = new ToolStripMenuItem();
             exit.Click += Exit_Click;
             exit.Text = "退出";
@@ -212,6 +269,11 @@ namespace Widget_WPF
             setting = new ToolStripMenuItem();
             setting.Click += Setting_Click;
             setting.Text = "设置";
+
+            resetLocation = new ToolStripMenuItem();
+            resetLocation.Click += ResetLocation_Click;
+            resetLocation.Text = "重置窗体位置";
+
 
             tss = new ToolStripSeparator();
 
@@ -231,23 +293,15 @@ namespace Widget_WPF
             });
         }
 
-        private void MW_Loaded(object sender, RoutedEventArgs e)
+        private void ResetLocation_Click(object sender, EventArgs e)
         {
-            WindowInteropHelper wndHelper = new WindowInteropHelper(this);
-
-            int exStyle = (int)Api.GetWindowLong(wndHelper.Handle, (int)Api.GetWindowLongFields.GWL_EXSTYLE);
-
-            exStyle |= (int)Api.ExtendedWindowStyles.WS_EX_TOOLWINDOW;
-
-            Api.SetWindowLong(wndHelper.Handle, (int)Api.GetWindowLongFields.GWL_EXSTYLE, (IntPtr)exStyle);
-
-            Api.SetParent(new WindowInteropHelper(this).Handle, Api.GetDesktopPtr());
-
+            Data.jo["left"] = this.Left = Data.DEFAULT_FORM_LEFT;
+            Data.jo["top"] = this.Top = Data.DEFAULT_FORM_TOP;
+            File.WriteAllText(Data.DEFAULT_CONFIG_PATH, Data.jo.ToString());
         }
 
         private void ShowSetting()
         {
-            //s = new Setting(this);
             try
             {
                 s.ShowDialog();
