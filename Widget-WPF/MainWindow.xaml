@@ -27,8 +27,8 @@
                Name="Time"
                Foreground="#FFFFFFFF"
                Background="Transparent"
-               FontFamily="微软雅黑 Light"
-               Width="290" Margin="9,0,0,0" />
+               FontFamily="微软雅黑 Light, Yu Gothic UI Light, 微软雅黑"
+               Width="301" Margin="9,0,0,0" />
         <Label Content="January 1"
                HorizontalAlignment="Left"
                Margin="19,146,0,0"
@@ -36,7 +36,7 @@
                FontSize="25"
                Height="44"
                Width="164"
-               FontFamily="微软雅黑 Light"
+               FontFamily="微软雅黑 Light, Yu Gothic UI Light, 微软雅黑"
                Foreground="#FFFFFFFF"
                Name="Date" />
         <Label Content="Monday"
@@ -46,7 +46,7 @@
                FontSize="25"
                Height="47"
                Width="164"
-               FontFamily="微软雅黑 Light"
+               FontFamily="微软雅黑 Light, Yu Gothic UI Light, 微软雅黑"
                Foreground="#FFFFFFFF"
                Name="Week" />
 

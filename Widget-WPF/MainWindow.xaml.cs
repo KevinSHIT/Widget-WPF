@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.VisualBasic.Devices;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -26,6 +27,7 @@ namespace Widget_WPF
         public NotifyIcon notify;
         readonly BrushConverter bc = new BrushConverter();
         readonly Setting s;
+        static bool IsWindows10;
 
         public MainWindow()
         {
@@ -232,6 +234,8 @@ namespace Widget_WPF
         #region 初始化
         private void MW_Loaded(object sender, RoutedEventArgs e)
         {
+            IsWindows10 = (new ComputerInfo().OSFullName).StartsWith("Microsoft Windows 10");
+
             WindowInteropHelper wndHelper = new WindowInteropHelper(this);
 
             int exStyle = (int)Api.GetWindowLong(wndHelper.Handle, (int)Api.GetWindowLongFields.GWL_EXSTYLE);
@@ -240,8 +244,13 @@ namespace Widget_WPF
 
             Api.SetWindowLong(wndHelper.Handle, (int)Api.GetWindowLongFields.GWL_EXSTYLE, (IntPtr)exStyle);
 
-            Api.SetParent(new WindowInteropHelper(this).Handle, Api.GetDesktopPtr());
-
+            if (!IsWindows10)
+            {
+                if (MessageBox.Show("Windows 7及以前系统可能会遭受错误的兼容性问题，是否禁用部分代码（会出现BUG）以解决问题？", "兼容性问题", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                    Api.SetParent(new WindowInteropHelper(this).Handle, Api.GetDesktopPtr());
+            }
+            else
+                Api.SetParent(new WindowInteropHelper(this).Handle, Api.GetDesktopPtr());
         }
 
         readonly ContextMenuStrip cms = new ContextMenuStrip();
