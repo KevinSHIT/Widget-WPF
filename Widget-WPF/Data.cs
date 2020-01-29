@@ -18,13 +18,14 @@ namespace Widget_WPF
         public static string _tmpBackColor;
         public static string _tmpFontColor;
 
-        public const string DEFAULT_BACK_COLOR = "#99669FFF";
-        public const string DEFAULT_FONT_COLOR = "#FFFFFFFF";
+        public const string DEFAULT_BACK_COLOR = "#45FFFFFF";
+        public const string DEFAULT_FONT_COLOR = "#EEFFFFFF";
         public const string DEFAULT_CONFIG_PATH = "config.json";
+
         public const string DEFAULT_CONFIG_JSON =
             "{\r\n" +
-            "    \"backcolor\" : \"#99ff9fff\",\r\n" +
-            "    \"fontcolor\" : \"#FFFFFFFF\"\r\n" +
+            "    \"backcolor\": \"#45FFFFFF\",\r\n" +
+            "    \"fontcolor\": \"#EEFFFFFF\"\r\n" +
             "}";
     }
 }
