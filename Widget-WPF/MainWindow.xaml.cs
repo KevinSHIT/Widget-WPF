@@ -289,6 +289,7 @@ namespace Widget_WPF
             {
                 name,
                 tss,
+                resetLocation,
                 lockForm,
                 setting,
                 exit
