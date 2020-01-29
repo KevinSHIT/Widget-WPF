@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Windows;
@@ -196,7 +197,7 @@ namespace Widget_WPF
         {
             try
             {
-                Week.Foreground = Minute.Foreground = Hour.Foreground = Second.Foreground = Date.Foreground = (Brush)bc.ConvertFrom(htmlColor);
+                Week.Foreground = Time.Foreground = Date.Foreground = (Brush)bc.ConvertFrom(htmlColor);
             }
             catch
             {
@@ -211,11 +212,12 @@ namespace Widget_WPF
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    Hour.Content = Tool.GetDate(Tool.Mode.Hour).PadLeft(2, '0');
+                    //Hour.Content = Tool.GetDate(Tool.Mode.Hour).PadLeft(2, '0');
                     Date.Content = Tool.GetDate(Tool.Mode.Date);
-                    Minute.Content = Tool.GetDate(Tool.Mode.Minute).PadLeft(2, '0');
-                    Second.Content = Tool.GetDate(Tool.Mode.Second).PadLeft(2, '0');
+                    //Minute.Content = Tool.GetDate(Tool.Mode.Minute).PadLeft(2, '0');
+                    //Second.Content = Tool.GetDate(Tool.Mode.Second).PadLeft(2, '0');
                     Week.Content = Tool.GetDate(Tool.Mode.Week);
+                    Time.Content = Tool.GetDate(Tool.Mode.Time);
                 }));
 
                 Thread.Sleep(100);
@@ -333,7 +335,8 @@ namespace Widget_WPF
             Minute = 1,
             Date = 2,
             Second = 3,
-            Week = 4
+            Week = 4,
+            Time = 5
         }
 
         public static string GetDate(Mode mode)
@@ -346,11 +349,14 @@ namespace Widget_WPF
                     return DateTime.Now.Hour.ToString();
                 case Mode.Date:
                     //return DateTime.Now.ToLongDateString().ToString();
-                    return DateTime.Now.ToString("yyyy-MM-dd");
+                    //return DateTime.Now.ToString("yyyy-MM-dd");
+                    return DateTime.Now.ToString("MMMM dd", CultureInfo.CreateSpecificCulture("en-US"));
                 case Mode.Second:
                     return DateTime.Now.Second.ToString();
                 case Mode.Week:
                     return DateTime.Now.DayOfWeek.ToString();
+                case Mode.Time:
+                    return DateTime.Now.ToString("hh:mm tt").Replace("上午", "AM").Replace("下午", "PM");
                 default:
                     throw new ArgumentOutOfRangeException("Your mode is not valid!");
             }

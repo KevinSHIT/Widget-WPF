@@ -32,7 +32,7 @@ namespace Widget_WPF
         {
             this.colorBox.BackColor = ColorTranslator.FromHtml(_main.Background.ToString());
             this.backHtmlColorBox.Text = _main.Background.ToString();
-            this.fontHtmlColorBox.Text = _main.Hour.Foreground.ToString();
+            this.fontHtmlColorBox.Text = _main.Time.Foreground.ToString();
             RefreshBar(backHtmlColorBox.Text);
         }
 
