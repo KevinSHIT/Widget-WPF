@@ -179,7 +179,12 @@ namespace Widget_WPF
 
         private void Setting_Click(object sender, EventArgs e) => ShowSetting();
 
-        private void Exit_Click(object sender, EventArgs e) => Environment.Exit(0);
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            notify.Visible = false;
+            notify.Dispose();
+            Environment.Exit(0);
+        }
 
         public void RefreshBackColor(string htmlColor)
         {
@@ -247,9 +252,10 @@ namespace Widget_WPF
             {
                 Text = "Time Widger",
                 Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))),
-                Visible = true,
+                Visible = false,
                 ContextMenuStrip = cms
             };
+            notify.Visible = true;
         }
 
         ToolStripMenuItem exit, lockForm, setting, resetLocation;
