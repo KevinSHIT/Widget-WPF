@@ -8,11 +8,11 @@ using System.Windows;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Widget-WPF")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("一个简洁轻松的桌面时钟控件")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Kevin Zonda")]
 [assembly: AssemblyProduct("Widget-WPF")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright ©  2020 KevinZonda.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

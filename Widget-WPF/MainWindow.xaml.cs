@@ -242,10 +242,11 @@ namespace Widget_WPF
         readonly ContextMenuStrip cms = new ContextMenuStrip();
         private void InitializeNotifyIcon()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setting));
             notify = new System.Windows.Forms.NotifyIcon
             {
                 Text = "Time Widger",
-                Icon = new System.Drawing.Icon(@"cby3o-13tit-004.ico"),
+                Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))),
                 Visible = true,
                 ContextMenuStrip = cms
             };
