@@ -259,7 +259,7 @@ namespace Widget_WPF
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setting));
             notify = new System.Windows.Forms.NotifyIcon
             {
-                Text = "Time Widger",
+                Text = "Widget-WPF",
                 Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))),
                 Visible = false,
                 ContextMenuStrip = cms
