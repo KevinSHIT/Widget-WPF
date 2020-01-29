@@ -56,7 +56,7 @@ namespace Widget_WPF
         }
         private void Setting_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void HtmlColorBox_TextChanged(object sender, EventArgs e)
@@ -112,14 +112,6 @@ namespace Widget_WPF
             _main.RefreshFontColor(Data.fontColor);
         }
 
-        private void colorBox_Paint(object sender, PaintEventArgs e)
-        {
-            var pp = new System.Drawing.Pen(System.Drawing.Color.Black, 3);
-            e.Graphics.DrawRectangle(pp, e.ClipRectangle.X,
-            e.ClipRectangle.Y,
-            e.ClipRectangle.X + e.ClipRectangle.Width - 1,
-            e.ClipRectangle.Y + e.ClipRectangle.Height - 1);
-        }
 
         private string GenerateHtmlColorCode()
         {
