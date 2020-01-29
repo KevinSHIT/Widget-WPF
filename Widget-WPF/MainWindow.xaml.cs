@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
@@ -26,6 +29,9 @@ namespace Widget_WPF
         public MainWindow()
         {
             InitializeComponent();
+            ReadConfig();
+            RefreshBackColor(Data.backColor);
+            RefreshFontColor(Data.fontColor);
             InitializeNotifyIcon();
             InitializeContextMenuStrip();
             t = new Thread(new ThreadStart(SetTime));
@@ -34,7 +40,90 @@ namespace Widget_WPF
             MouseMove += MainWindow_MouseMove;
             Topmost = false;
             s = new Setting(this);
+        }
 
+        private bool IsHtmlColorCode(string code)
+        {
+            if (code.StartsWith("#"))
+            {
+                code = code.Substring(1);
+                if (code.Length == 6 || code.Length == 8)
+                {
+                    char[] _ = code.ToCharArray();
+                    string _s = "";
+                    for (int i = 0; i < code.Length; i++)
+                    {
+                        _s += _[i];
+
+                        if ((i + 1) % 2 == 0)
+                        {
+                            try
+                            {
+                                Convert.ToInt32(_s, 16);
+                            }
+                            catch
+                            {
+                                return false;
+                            }
+                            _s = "";
+                        }
+                    }
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void ReadConfig()
+        {
+            if (File.Exists(Data.DEFAULT_CONFIG_PATH))
+            {
+                try
+                {
+                    Data.jo = JObject.Parse(File.ReadAllText(Data.DEFAULT_CONFIG_PATH));
+                }
+                catch
+                {
+                    CreateConfig(Data.DEFAULT_CONFIG_PATH);
+                    ReadConfig();
+                }
+                if (Data.jo["backcolor"] == null || !IsHtmlColorCode(Data.jo["backcolor"].ToString()))
+                {
+                    Data.jo["backcolor"] = Data.DEFAULT_BACK_COLOR;
+                }
+                if (Data.jo["fontcolor"] == null || !IsHtmlColorCode(Data.jo["fontcolor"].ToString()))
+                {
+                    Data.jo["fontcolor"] = Data.DEFAULT_FONT_COLOR;
+                }
+
+                Data.backColor = Data.jo["backcolor"].ToString();
+                Data.fontColor = Data.jo["fontcolor"].ToString();
+            }
+            else
+            {
+                CreateConfig(Data.DEFAULT_CONFIG_PATH);
+                ReadConfig();
+            }
+        }
+
+        private void CreateConfig(string path)
+        {
+            try
+            {
+                File.WriteAllText(Data.DEFAULT_CONFIG_PATH, Data.DEFAULT_CONFIG_JSON);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("创建配置文件出现错误，错误信息：\r\n" + ex.ToString(), "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(0);
+            }
         }
 
         private void MainWindow_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)

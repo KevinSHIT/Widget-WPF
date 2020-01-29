@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using System.Windows.Media;
 
@@ -56,7 +57,7 @@ namespace Widget_WPF
         }
         private void Setting_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void HtmlColorBox_TextChanged(object sender, EventArgs e)
@@ -88,6 +89,9 @@ namespace Widget_WPF
             //Data.backColor
             _main.RefreshBackColor(Data.backColor = backHtmlColorBox.Text);
             _main.RefreshFontColor(Data.fontColor = fontHtmlColorBox.Text);
+            Data.jo["backcolor"] = Data.backColor;
+            Data.jo["fontcolor"] = Data.fontColor;
+            File.WriteAllText(Data.DEFAULT_CONFIG_PATH, Data.jo.ToString());
             this.Close();
         }
 
