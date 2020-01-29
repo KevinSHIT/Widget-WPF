@@ -45,14 +45,6 @@ namespace Widget_WPF
             }
         }
 
-        public void UpdateFormColor(string htmlCode)
-        {
-            Background = (Brush)bc.ConvertFrom(htmlCode);
-        }
-
-
-        private void Button_Click(object sender, RoutedEventArgs e) => ShowSetting();
-
         private void Setting_Click(object sender, EventArgs e) => ShowSetting();
 
         private void Exit_Click(object sender, EventArgs e) => Environment.Exit(0);
@@ -66,7 +58,6 @@ namespace Widget_WPF
             catch
             {
                 //MessageBox.Show("设置颜色出现错误，您输入的颜色有问题？已回滚至上一个色彩。", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
-
             }
         }
 
@@ -74,12 +65,11 @@ namespace Widget_WPF
         {
             try
             {
-                Minute.Foreground = Hour.Foreground = Second.Foreground = Date.Foreground = (Brush)bc.ConvertFrom(htmlColor);
+                Week.Foreground = Minute.Foreground = Hour.Foreground = Second.Foreground = Date.Foreground = (Brush)bc.ConvertFrom(htmlColor);
             }
             catch
             {
                 //MessageBox.Show("设置颜色出现错误，您输入的颜色有问题？已回滚至上一个色彩。", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
-
             }
         }
 
@@ -94,6 +84,7 @@ namespace Widget_WPF
                     Date.Content = Tool.GetDate(Tool.Mode.Date);
                     Minute.Content = Tool.GetDate(Tool.Mode.Minute).PadLeft(2, '0');
                     Second.Content = Tool.GetDate(Tool.Mode.Second).PadLeft(2, '0');
+                    Week.Content = Tool.GetDate(Tool.Mode.Week);
                 }));
 
                 Thread.Sleep(100);
@@ -111,7 +102,6 @@ namespace Widget_WPF
                 Visible = true,
                 ContextMenuStrip = cms
             };
-
         }
 
         ToolStripMenuItem exit, lockForm, setting;
@@ -166,8 +156,6 @@ namespace Widget_WPF
 
         }
 
-
-
         private void ShowSetting()
         {
             //s = new Setting(this);
@@ -194,8 +182,6 @@ namespace Widget_WPF
 
     }
 
-
-
     class Tool
     {
         public enum Mode
@@ -203,7 +189,8 @@ namespace Widget_WPF
             Hour = 0,
             Minute = 1,
             Date = 2,
-            Second = 3
+            Second = 3,
+            Week = 4
         }
 
         public static string GetDate(Mode mode)
@@ -215,10 +202,12 @@ namespace Widget_WPF
                 case Mode.Hour:
                     return DateTime.Now.Hour.ToString();
                 case Mode.Date:
-                    return DateTime.Now.ToLongDateString().ToString();
+                    //return DateTime.Now.ToLongDateString().ToString();
+                    return DateTime.Now.ToString("yyyy-MM-dd");
                 case Mode.Second:
                     return DateTime.Now.Second.ToString();
-
+                case Mode.Week:
+                    return DateTime.Now.DayOfWeek.ToString();
                 default:
                     throw new ArgumentOutOfRangeException("Your mode is not valid!");
             }

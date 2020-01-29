@@ -10,7 +10,7 @@
         Background="#99669FFF"
         Title="MainWindow"
         Height="200"
-        Width="360"
+        Width="350"
         Loaded="MW_Loaded"
         ShowInTaskbar="False"
         ResizeMode="NoResize">
@@ -21,7 +21,7 @@
 
         <Label Content="00"
                HorizontalAlignment="Left"
-               Margin="0"
+               Margin="7,0,0,-1"
                VerticalAlignment="Top"
                FontSize="150"
                Height="201"
@@ -31,38 +31,40 @@
                Width="186" />
         <Label Content="00"
                HorizontalAlignment="Left"
-               Margin="186,33,0,0"
+               Margin="193,33,0,0"
                VerticalAlignment="Top"
                FontSize="50"
                Height="74"
                Width="69"
                x:Name="Minute"
                Foreground="White" />
-        <Label Content="2020年00月00日"
+        <Label Content="2020-00-00"
                HorizontalAlignment="Left"
-               Margin="191,107,0,0"
+               Margin="198,100,-7,0"
                VerticalAlignment="Top"
-               FontSize="20"
+               FontSize="18"
                Height="35"
                Width="164"
                Foreground="#FFFFFFFF"
                Name="Date" />
-        <Button Content="Button"
-                HorizontalAlignment="Left"
-                Margin="191,147,0,0"
-                VerticalAlignment="Top"
-                Width="138"
-                Click="Button_Click"
-                Height="19" />
         <Label Content="00"
                HorizontalAlignment="Left"
-               Margin="260,33,0,0"
+               Margin="267,33,0,0"
                VerticalAlignment="Top"
                FontSize="50"
                Height="74"
                Width="69"
                Foreground="#FFFFFFFF"
                x:Name="Second" />
+        <Label Content="Monday"
+            HorizontalAlignment="Left"
+            Margin="198,132,-7,0"
+            VerticalAlignment="Top"
+            FontSize="18"
+            Height="35"
+            Width="164"
+            Foreground="#FFFFFFFF"
+            x:Name="Week" />
 
     </Grid>
 </Window>
