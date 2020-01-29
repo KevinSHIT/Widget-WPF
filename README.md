@@ -21,7 +21,7 @@ An easy time widget for Windows 10.
 ## 使用需求
 
 - Windows 10以及以上版本*
-- .NET Framework 4.5
+- .NET Framework 4.7.2
 
 \* Windows 7以及部分版本仍可运行，但是由于存在轻微兼容性问题不被推荐**  
 \*\* 运行时会被提示警告
@@ -48,7 +48,7 @@ An easy time widget for Windows 10.
 ## Needed
 
 - Windows 10 or later Windows system*
-- .NET Framework 4.5
+- .NET Framework 4.7.2
 
 \* May works on Windows 7 or other version of Windows. But not be recommended beacuse that there are some problems**  
 \*\* Will alert when runs
