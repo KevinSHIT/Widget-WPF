@@ -40,15 +40,15 @@
                Foreground="#FFFFFFFF"
                Name="Date" />
         <Label Content="Monday"
-            HorizontalAlignment="Left"
-            Margin="19,99,0,0"
-            VerticalAlignment="Top"
-            FontSize="25"
-            Height="47"
-            Width="164"
-            FontFamily="微软雅黑 Light"
-            Foreground="#FFFFFFFF"
-            x:Name="Week" />
+               HorizontalAlignment="Left"
+               Margin="19,99,0,0"
+               VerticalAlignment="Top"
+               FontSize="25"
+               Height="47"
+               Width="164"
+               FontFamily="微软雅黑 Light"
+               Foreground="#FFFFFFFF"
+               Name="Week" />
 
     </Grid>
 </Window>
