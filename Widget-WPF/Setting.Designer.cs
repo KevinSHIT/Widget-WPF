@@ -44,14 +44,14 @@
             this.RNumeric = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.IsBack = new System.Windows.Forms.RadioButton();
-            this.IsFont = new System.Windows.Forms.RadioButton();
             this.fontHtmlColorBox = new System.Windows.Forms.TextBox();
+            this.IsFont = new System.Windows.Forms.RadioButton();
+            this.IsBack = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.RedBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlphaBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).BeginInit();
@@ -249,18 +249,16 @@
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             // 
-            // IsBack
+            // fontHtmlColorBox
             // 
-            this.IsBack.AutoSize = true;
-            this.IsBack.Checked = true;
-            this.IsBack.Location = new System.Drawing.Point(6, 20);
-            this.IsBack.Name = "IsBack";
-            this.IsBack.Size = new System.Drawing.Size(71, 16);
-            this.IsBack.TabIndex = 0;
-            this.IsBack.TabStop = true;
-            this.IsBack.Text = "背景颜色";
-            this.IsBack.UseVisualStyleBackColor = true;
-            this.IsBack.CheckedChanged += new System.EventHandler(this.IsBack_CheckedChanged);
+            this.fontHtmlColorBox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.fontHtmlColorBox.Location = new System.Drawing.Point(199, 38);
+            this.fontHtmlColorBox.MaxLength = 9;
+            this.fontHtmlColorBox.Name = "fontHtmlColorBox";
+            this.fontHtmlColorBox.Size = new System.Drawing.Size(148, 21);
+            this.fontHtmlColorBox.TabIndex = 19;
+            this.fontHtmlColorBox.TextChanged += new System.EventHandler(this.HtmlColorBox_TextChanged);
+            this.fontHtmlColorBox.Enter += new System.EventHandler(this.fontHtmlColorBox_Enter);
             // 
             // IsFont
             // 
@@ -273,16 +271,18 @@
             this.IsFont.UseVisualStyleBackColor = true;
             this.IsFont.CheckedChanged += new System.EventHandler(this.IsFont_CheckedChanged);
             // 
-            // fontHtmlColorBox
+            // IsBack
             // 
-            this.fontHtmlColorBox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.fontHtmlColorBox.Location = new System.Drawing.Point(199, 38);
-            this.fontHtmlColorBox.MaxLength = 9;
-            this.fontHtmlColorBox.Name = "fontHtmlColorBox";
-            this.fontHtmlColorBox.Size = new System.Drawing.Size(148, 21);
-            this.fontHtmlColorBox.TabIndex = 19;
-            this.fontHtmlColorBox.TextChanged += new System.EventHandler(this.HtmlColorBox_TextChanged);
-            this.fontHtmlColorBox.Enter += new System.EventHandler(this.fontHtmlColorBox_Enter);
+            this.IsBack.AutoSize = true;
+            this.IsBack.Checked = true;
+            this.IsBack.Location = new System.Drawing.Point(6, 20);
+            this.IsBack.Name = "IsBack";
+            this.IsBack.Size = new System.Drawing.Size(71, 16);
+            this.IsBack.TabIndex = 0;
+            this.IsBack.TabStop = true;
+            this.IsBack.Text = "背景颜色";
+            this.IsBack.UseVisualStyleBackColor = true;
+            this.IsBack.CheckedChanged += new System.EventHandler(this.IsBack_CheckedChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -301,16 +301,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(24, 147);
             this.tableLayoutPanel3.TabIndex = 19;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(11, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "R";
             // 
             // label2
             // 
@@ -342,6 +332,16 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "B";
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "R";
+            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -357,6 +357,8 @@
             this.Controls.Add(this.OK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Setting";
             this.Text = "设置";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Setting_FormClosing);
