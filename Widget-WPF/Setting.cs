@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Windows.Media;
+using System.Reflection;
 
 namespace Widget_WPF
 {
@@ -19,13 +18,26 @@ namespace Widget_WPF
             InitialSetting();
             this.IsBack.Checked = true;
             Application.EnableVisualStyles();
-            //Data.jo = JObject.Parse(Data.json);
         }
 
         private void Setting_Shown(object sender, EventArgs e)
         {
+            Application.EnableVisualStyles();
             this.IsBack.Checked = true;
             InitialSetting();
+            StartUpRunBox.Checked = IsRunStartUp();
+        }
+
+        private bool IsRunStartUp()
+        {
+            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Widget-WPF.lnk")))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void InitialSetting()
@@ -115,7 +127,6 @@ namespace Widget_WPF
             _main.RefreshFontColor(Data.fontColor);
         }
 
-
         private string GenerateHtmlColorCode()
         {
             r = RedBar.Value;
@@ -196,6 +207,29 @@ namespace Widget_WPF
         {
             FreshChecked();
             GNumeric.Value = GreenBar.Value;
+        }
+
+        private void StartUpRunBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (StartUpRunBox.Checked)
+            {
+                var shellType = Type.GetTypeFromProgID("WScript.Shell");
+                dynamic shell = Activator.CreateInstance(shellType);
+                var shortcut = shell.CreateShortcut(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Widget-WPF.lnk"));
+                shortcut.TargetPath = Assembly.GetEntryAssembly().Location;
+                shortcut.WorkingDirectory = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+                shortcut.Save();
+            }
+            else
+            {
+                try
+                {
+                    File.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Widget-WPF.lnk"));
+                }
+                catch
+                {
+                }
+            }
         }
 
         private void BlueBar_ValueChanged(object sender, EventArgs e)

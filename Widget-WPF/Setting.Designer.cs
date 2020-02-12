@@ -52,6 +52,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.StartUpRunBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.RedBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlphaBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).BeginInit();
@@ -69,7 +70,7 @@
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(211, 250);
+            this.OK.Location = new System.Drawing.Point(211, 270);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(75, 23);
             this.OK.TabIndex = 0;
@@ -79,7 +80,7 @@
             // 
             // Cancle
             // 
-            this.Cancle.Location = new System.Drawing.Point(292, 250);
+            this.Cancle.Location = new System.Drawing.Point(292, 270);
             this.Cancle.Name = "Cancle";
             this.Cancle.Size = new System.Drawing.Size(75, 23);
             this.Cancle.TabIndex = 1;
@@ -243,7 +244,7 @@
             this.groupBox1.Controls.Add(this.IsBack);
             this.groupBox1.Controls.Add(this.backHtmlColorBox);
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.groupBox1.Location = new System.Drawing.Point(13, 165);
+            this.groupBox1.Location = new System.Drawing.Point(12, 165);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(355, 70);
             this.groupBox1.TabIndex = 18;
@@ -263,7 +264,7 @@
             // IsFont
             // 
             this.IsFont.AutoSize = true;
-            this.IsFont.Location = new System.Drawing.Point(7, 43);
+            this.IsFont.Location = new System.Drawing.Point(6, 43);
             this.IsFont.Name = "IsFont";
             this.IsFont.Size = new System.Drawing.Size(71, 16);
             this.IsFont.TabIndex = 1;
@@ -342,12 +343,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "R";
             // 
+            // StartUpRunBox
+            // 
+            this.StartUpRunBox.AutoSize = true;
+            this.StartUpRunBox.Location = new System.Drawing.Point(20, 241);
+            this.StartUpRunBox.Name = "StartUpRunBox";
+            this.StartUpRunBox.Size = new System.Drawing.Size(84, 16);
+            this.StartUpRunBox.TabIndex = 20;
+            this.StartUpRunBox.Text = "开机自启动";
+            this.StartUpRunBox.UseVisualStyleBackColor = true;
+            this.StartUpRunBox.CheckedChanged += new System.EventHandler(this.StartUpRunBox_CheckedChanged);
+            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(380, 291);
+            this.ClientSize = new System.Drawing.Size(380, 304);
+            this.Controls.Add(this.StartUpRunBox);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -381,6 +394,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -409,5 +423,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox StartUpRunBox;
     }
 }
